@@ -28,6 +28,23 @@ def ej3():
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
     
+    cvsfile = open(archivo)
+    stock = list(csv.DictReader(cvsfile))
+
+    tornillos_suma = 0
+
+    for i in range(len(stock)):
+        lista = stock[i]
+        for k,v in lista.items():
+            if k == 'tornillos':
+                cantidad_tornillos = v
+                tornillos_suma += int(cantidad_tornillos)
+
+    print('El total de tornillos es:', tornillos_suma)
+
+    cvsfile.close()
+
+
 
 
 def ej4():
@@ -47,6 +64,27 @@ def ej4():
     # utilizando "try except", tema que se verá la clase que viene.
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
+
+    with open(archivo) as csvfile:
+        propiedades = list(csv.DictReader(csvfile))
+
+    dos_ambientes = 0
+    tres_ambientes = 0
+
+
+    for i in range(len(propiedades)):
+        departamentos = propiedades[i]
+        for k,v in departamentos.items():
+            if k == "ambientes":
+                if v == "2":
+                    dos_ambientes += 1
+                elif k == "3":
+                    tres_ambientes += 1
+           
+
+
+    print('LA CANTIDAD DE DEPTOS DOS AMBIENTES ES DE:', dos_ambientes)
+    print('LA CANTIDAD DE DEPTOS TRES AMBIENTES ES DE:', tres_ambientes)
 
 
 if __name__ == '__main__':
